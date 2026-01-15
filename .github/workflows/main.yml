@@ -1,4 +1,5 @@
 name: Build LogiTrack Mobile
+
 on:
   push:
     branches:
@@ -19,19 +20,17 @@ jobs:
           java-version: '17'
           distribution: 'zulu'
 
-      # 3️⃣ تنظيف كامل للبيئة القديمة
+      # 3️⃣ تثبيت Node و Dependencies (لو package-lock.json مش موجود، npm install يولده)
+      - name: Install Node Dependencies
+        run: npm install
+
+      # 4️⃣ تنظيف كامل للبيئة القديمة
       - name: Full Clean Environment
         run: |
           rm -rf dist
           rm -rf android
-          rm -rf node_modules
           rm -rf node_modules/.vite
-          rm -rf ~/.npm
-          echo "تم حذف كل الملفات القديمة و cache"
-
-      # 4️⃣ تثبيت Node و Dependencies من جديد (نظيف)
-      - name: Install Node Dependencies
-        run: npm ci
+          echo "تم حذف كل الملفات القديمة"
 
       # 5️⃣ بناء واجهة الويب
       - name: Build Web Assets
@@ -40,21 +39,19 @@ jobs:
       # 6️⃣ إعداد Capacitor Android جديد
       - name: Initialize Capacitor Android
         run: |
-          npx cap add android
+          npx cap add android || echo "Android platform already exists"
           npx cap sync android
 
       # 7️⃣ بناء APK للتجربة
       - name: Build Debug APK
         run: |
           cd android
-          ./gradlew clean
           ./gradlew assembleDebug
 
       # 8️⃣ بناء AAB (Release Bundle)
       - name: Build Release Bundle
         run: |
           cd android
-          ./gradlew clean
           ./gradlew bundleRelease
 
       # 9️⃣ رفع APK للتجربة

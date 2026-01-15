@@ -30,7 +30,7 @@ const App: React.FC = () => {
            </div>
            <div>
              <span className="text-xl font-black text-slate-900 block leading-none">LogiTrack</span>
-             <span className="text-[10px] text-blue-600 font-bold uppercase">{isAr ? 'Ø¨ÙˆØ§Ø¨Ø© Ø§Ù„Ø²Ø¨Ø§Ø¦Ù†' : 'Customer Portal'}</span>
+             <span className="text-[10px] text-blue-600 font-bold uppercase">{isAr ? 'بوابة الزبائن' : 'Customer Portal'}</span>
            </div>
         </div>
         
@@ -39,7 +39,7 @@ const App: React.FC = () => {
           className="flex items-center gap-2 text-blue-600 font-bold text-sm px-4 py-2 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
         >
           <Globe className="w-4 h-4" />
-          {isAr ? 'English' : 'Ø§Ù„Ø¹Ø±Ø¨ÙŠØ©'}
+          {isAr ? 'English' : 'العربية'}
         </button>
       </header>
 

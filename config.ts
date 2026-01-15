@@ -10,5 +10,5 @@ export const APP_TYPE: 'USER' | 'ADMIN' | 'DRIVER' = 'USER';
 export const DB_CONFIG = {
   enabled: true, 
   url: 'https://zdcngosnxowrycqtmvkt.supabase.co', 
-  key: 'sb_publishable_RhYLt_aihE-tIbliAM_Xcg_FCUOkTEz' 
+  key: 'sb_publishable_-8GI0A38NqWpLtlFy0zBJA_5cfQpDDH' 
 };

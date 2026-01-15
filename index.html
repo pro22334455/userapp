@@ -1,55 +1,64 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>LogiTrack - Customer Portal</title>
+  <title>LogiTrack - تتبع الشحنات</title>
   
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;700&display=swap');
     
-    * {
-      -webkit-tap-highlight-color: transparent;
-      font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+    :root {
+      --primary: #2563eb;
     }
 
-    body { 
-      background-color: #f8fafc;
+    body {
       margin: 0;
       padding: 0;
+      font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+      background-color: #f8fafc;
       overflow-x: hidden;
     }
 
-    #map { height: 100%; width: 100%; }
+    /* تحسين عرض النصوص العربية وتجنب الرموز الغريبة */
+    * {
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-    /* تحسين القراءة للنصوص العربية */
-    .ar-text {
-      direction: rtl;
-      unicode-bidi: isolate;
+    #root {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
   </style>
 
   <script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
+    "react": "https://esm.sh/react@19.0.0",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+    "lucide-react": "https://esm.sh/lucide-react@0.446.0",
+    "leaflet": "https://esm.sh/leaflet@1.9.4",
+    "framer-motion": "https://esm.sh/framer-motion@11.0.0",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
-    "leaflet": "https://esm.sh/leaflet@^1.9.4",
-    "framer-motion": "https://esm.sh/framer-motion@^11.0.0",
     "react/": "https://esm.sh/react@^19.2.3/",
     "@capacitor/cli": "https://esm.sh/@capacitor/cli@^8.0.1"
   }
 }
 </script>
 </head>
-<body class="bg-slate-50">
+<body>
   <div id="root"></div>
+  <!-- هذا السطر هو المحرك الأساسي للتطبيق، بدونه تظهر الصفحة بيضاء -->
+  <script type="module" src="./index.tsx"></script>
 </body>
 </html>

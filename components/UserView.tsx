@@ -14,12 +14,12 @@ const UserView: React.FC<Props> = ({ lang }) => {
   const [error, setError] = useState('');
 
   const statusLabels: Record<string, string> = {
-    'China_Store': isAr ? 'Ø¨Ø§Ù†ØªØ¸Ø§Ø± Ø§Ù„Ø´Ø­Ù† Ù…Ù† Ø§Ù„Ù…ØªØ¬Ø±' : 'Pending Shipment',
-    'China_Warehouse': isAr ? 'ÙˆØµÙ„Øª Ù…Ø®Ø²Ù†Ù†Ø§ ÙÙŠ Ø§Ù„ØµÙŠÙ†' : 'In China Warehouse',
-    'En_Route': isAr ? 'ÙÙŠ Ø§Ù„Ø´Ø­Ù† Ø§Ù„Ø¯ÙˆÙ„ÙŠ' : 'En Route',
-    'Libya_Warehouse': isAr ? 'ÙˆØµÙ„Øª Ù…Ø®Ø§Ø²Ù†Ù†Ø§ ÙÙŠ Ù„ÙŠØ¨ÙŠØ§' : 'In Libya Warehouse',
-    'Out_for_Delivery': isAr ? 'Ø®Ø±Ø¬Øª Ù…Ø¹ Ø§Ù„Ù…Ù†Ø¯ÙˆØ¨ Ù„Ù„ØªÙˆØµÙŠÙ„' : 'Out for Delivery',
-    'Delivered': isAr ? 'ØªÙ… ØªØ³Ù„ÙŠÙ… Ø§Ù„Ø´Ø­Ù†Ø© Ø¨Ù†Ø¬Ø§Ø­' : 'Delivered'
+    'China_Store': isAr ? 'بانتظار الشحن من المتجر' : 'Pending Shipment',
+    'China_Warehouse': isAr ? 'وصلت مخزننا في الصين' : 'In China Warehouse',
+    'En_Route': isAr ? 'في الشحن الدولي' : 'En Route',
+    'Libya_Warehouse': isAr ? 'وصلت مخازننا في ليبيا' : 'In Libya Warehouse',
+    'Out_for_Delivery': isAr ? 'خرجت مع المندوب للتوصيل' : 'Out for Delivery',
+    'Delivered': isAr ? 'تم تسليم الشحنة بنجاح' : 'Delivered'
   };
 
   const handleSearch = async () => {
@@ -37,10 +37,10 @@ const UserView: React.FC<Props> = ({ lang }) => {
       if (order) {
         setFoundOrder(order);
       } else {
-        setError(isAr ? 'Ø¹Ø°Ø±Ø§Ù‹ØŒ ÙƒÙˆØ¯ Ø§Ù„Ø´Ø­Ù†Ø© ØºÙŠØ± Ù…ÙˆØ¬ÙˆØ¯' : 'Shipment not found');
+        setError(isAr ? 'عذراً، كود الشحنة غير موجود' : 'Shipment not found');
       }
     } catch (err) {
-      setError(isAr ? 'Ø®Ø·Ø£ ÙÙŠ Ø§Ù„Ø§ØªØµØ§Ù„ Ø¨Ø§Ù„Ø³ÙŠØ±ÙØ±' : 'Connection error');
+      setError(isAr ? 'خطأ في الاتصال بالسيرفر' : 'Connection error');
     } finally {
       setLoading(false);
     }
@@ -53,10 +53,10 @@ const UserView: React.FC<Props> = ({ lang }) => {
           <Package className="w-10 h-10" />
         </div>
         <h1 className="text-3xl font-black text-slate-900 tracking-tight">
-          {isAr ? 'ØªØªØ¨Ø¹ Ø´Ø­Ù†ØªÙƒ' : 'Track Your Package'}
+          {isAr ? 'تتبع شحنتك' : 'Track Your Package'}
         </h1>
         <p className="text-slate-500 mt-2 text-sm font-medium">
-          {isAr ? 'Ø£Ø¯Ø®Ù„ ÙƒÙˆØ¯ Ø§Ù„ØªØªØ¨Ø¹ Ø§Ù„Ø®Ø§Øµ Ø¨Ùƒ Ù„Ù…ØªØ§Ø¨Ø¹Ø© Ø­Ø§Ù„Ø© Ø§Ù„Ø·Ø±Ø¯' : 'Enter your code to track in real-time'}
+          {isAr ? 'أدخل كود التتبع الخاص بك لمتابعة حالة الطرد' : 'Enter your code to track in real-time'}
         </p>
       </div>
 
@@ -74,7 +74,7 @@ const UserView: React.FC<Props> = ({ lang }) => {
           className="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-xl font-black flex items-center justify-center gap-2 transition-all active:scale-95 disabled:opacity-50 shadow-lg shadow-blue-200"
         >
           {loading ? <Loader2 className="animate-spin w-5 h-5" /> : <Search className="w-5 h-5" />}
-          <span>{isAr ? 'Ø¨Ø­Ø«' : 'Search'}</span>
+          <span>{isAr ? 'بحث' : 'Search'}</span>
         </button>
       </div>
 
@@ -91,11 +91,11 @@ const UserView: React.FC<Props> = ({ lang }) => {
             <div className="bg-slate-900 p-6 md:p-8 text-white flex justify-between items-center relative">
               <div className="absolute top-0 right-0 left-0 h-1 bg-blue-600"></div>
               <div>
-                <p className="text-slate-500 text-[10px] font-black uppercase mb-1 tracking-widest">{isAr ? 'Ø±Ù‚Ù… Ø§Ù„ØªØªØ¨Ø¹' : 'Tracking ID'}</p>
+                <p className="text-slate-500 text-[10px] font-black uppercase mb-1 tracking-widest">{isAr ? 'رقم التتبع' : 'Tracking ID'}</p>
                 <h2 className="text-2xl md:text-3xl font-black text-blue-400">{foundOrder.orderCode}</h2>
               </div>
               <div className="text-left bg-blue-500/10 border border-blue-500/20 px-4 py-2 rounded-xl backdrop-blur-md">
-                 <p className="text-blue-400 text-[10px] font-black uppercase mb-1">{isAr ? 'Ø§Ù„Ø­Ø§Ù„Ø©' : 'Status'}</p>
+                 <p className="text-blue-400 text-[10px] font-black uppercase mb-1">{isAr ? 'الحالة' : 'Status'}</p>
                  <p className="font-black text-sm md:text-base whitespace-nowrap">{statusLabels[foundOrder.status]}</p>
               </div>
             </div>
@@ -105,14 +105,14 @@ const UserView: React.FC<Props> = ({ lang }) => {
                 <div className="bg-slate-50 p-5 rounded-3xl flex items-start gap-4 border border-slate-100">
                   <div className="p-3 bg-white text-blue-600 rounded-2xl shadow-sm"><ShoppingBag className="w-5 h-5" /></div>
                   <div>
-                    <p className="text-slate-400 text-[10px] font-black uppercase mb-1">{isAr ? 'Ø§Ù„Ù…Ù†ØªØ¬' : 'Product'}</p>
+                    <p className="text-slate-400 text-[10px] font-black uppercase mb-1">{isAr ? 'المنتج' : 'Product'}</p>
                     <p className="font-bold text-slate-800 text-sm md:text-base">{foundOrder.productName || '---'}</p>
                   </div>
                 </div>
                 <div className="bg-slate-50 p-5 rounded-3xl flex items-start gap-4 border border-slate-100">
                   <div className="p-3 bg-white text-blue-600 rounded-2xl shadow-sm"><User className="w-5 h-5" /></div>
                   <div>
-                    <p className="text-slate-400 text-[10px] font-black uppercase mb-1">{isAr ? 'Ø§Ù„Ù…Ø³ØªÙ„Ù…' : 'Receiver'}</p>
+                    <p className="text-slate-400 text-[10px] font-black uppercase mb-1">{isAr ? 'المستلم' : 'Receiver'}</p>
                     <p className="font-bold text-slate-800 text-sm md:text-base">{foundOrder.customerName}</p>
                   </div>
                 </div>
@@ -123,7 +123,7 @@ const UserView: React.FC<Props> = ({ lang }) => {
                   <Clock className="w-6 h-6" />
                 </div>
                 <div className="flex-1">
-                  <p className="text-blue-200 text-[10px] font-black uppercase mb-1">{isAr ? 'Ø§Ù„Ù…ÙˆÙ‚Ø¹ Ø§Ù„Ø­Ø§Ù„ÙŠ' : 'Live Location'}</p>
+                  <p className="text-blue-200 text-[10px] font-black uppercase mb-1">{isAr ? 'الموقع الحالي' : 'Live Location'}</p>
                   <p className="font-black text-lg md:text-xl leading-tight">
                     {foundOrder.currentPhysicalLocation || statusLabels[foundOrder.status]}
                   </p>
@@ -135,7 +135,7 @@ const UserView: React.FC<Props> = ({ lang }) => {
                   <div className="flex justify-between items-center">
                     <p className="text-xs font-black text-slate-400 uppercase flex items-center gap-2 tracking-widest">
                       <span className="w-2 h-2 bg-red-500 rounded-full animate-ping"></span>
-                      {isAr ? 'ØªØªØ¨Ø¹ Ø§Ù„Ù…Ù†Ø¯ÙˆØ¨ Ù…Ø¨Ø§Ø´Ø±' : 'Live Driver Tracking'}
+                      {isAr ? 'تتبع المندوب مباشر' : 'Live Driver Tracking'}
                     </p>
                   </div>
                   <div className="h-64 rounded-[2rem] overflow-hidden border-4 border-slate-50 shadow-inner relative">
@@ -151,12 +151,12 @@ const UserView: React.FC<Props> = ({ lang }) => {
               <div className="pt-6 border-t border-slate-100 grid grid-cols-2 gap-4">
                   <div className="text-center p-4">
                       <Hash className="w-4 h-4 mx-auto mb-2 text-slate-300" />
-                      <p className="text-slate-400 text-[10px] font-bold uppercase">{isAr ? 'Ø§Ù„ÙƒÙ…ÙŠØ©' : 'Qty'}</p>
+                      <p className="text-slate-400 text-[10px] font-bold uppercase">{isAr ? 'الكمية' : 'Qty'}</p>
                       <p className="font-black text-slate-800">{foundOrder.quantity}</p>
                   </div>
                   <div className="text-center p-4">
                       <CreditCard className="w-4 h-4 mx-auto mb-2 text-slate-300" />
-                      <p className="text-slate-400 text-[10px] font-bold uppercase">{isAr ? 'Ø§Ù„Ø¥Ø¬Ù…Ø§Ù„ÙŠ' : 'Total'}</p>
+                      <p className="text-slate-400 text-[10px] font-bold uppercase">{isAr ? 'الإجمالي' : 'Total'}</p>
                       <p className="font-black text-emerald-600">{foundOrder.totalPrice} LYD</p>
                   </div>
               </div>
